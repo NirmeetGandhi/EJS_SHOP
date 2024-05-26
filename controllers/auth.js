@@ -239,7 +239,7 @@ exports.postReset = (req, res, next) => {
       .then((result) => {
         res.redirect("/");
         const body = `<p>Password Reset link</p>
-        <p> <a href=${process.env.BASE_URL}/reset/${token}">Click this</a>to set a new password</p>
+        <p> <a href=${process.env.BASE_URL}/reset/${token}>Click this</a>to set a new password</p>
         `;
         transporter.sendMail({
           to: req.body.email,
