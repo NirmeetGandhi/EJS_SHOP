@@ -95,7 +95,10 @@ app.use(
 
 // Handler for giving access to the public folder , where are static files are , which are available to public
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/images", express.static(path.join(__dirname, "images")));
+app.use(
+  `${process.env.BASE_URL}/images`,
+  express.static(path.join(__dirname, "images"))
+);
 
 //setting session middleware
 app.use(
