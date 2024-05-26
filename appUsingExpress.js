@@ -23,10 +23,10 @@ dotenv.config();
 const errorController = require("./controllers/error");
 const User = require("./models/user");
 
-// const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 4000;
 //Uncomment this when you want to connect with local database
-const MONGODB_URI = "mongodb://127.0.0.1:27017/myshop";
+// const MONGODB_URI = "mongodb://127.0.0.1:27017/myshop";
 
 // const mongoConnect = require('./util/database').mongoConnect;
 
