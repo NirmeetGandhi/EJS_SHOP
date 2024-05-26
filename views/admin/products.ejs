@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= pageTitle %></title> -->
+     <!-- app.use(express.static(path.join(__dirname , 'public'))); (Here we are saying only /CSS/main.css , because in our) -->
+    <!-- appUsingExpress file we are already saying that look for static files in public folder , hence it will add that path automatically -->
+    <!-- <link rel="stylesheet" href="/CSS/main.css">
+    <link rel="stylesheet" href="/CSS/product.css">
+    <link rel="stylesheet" href="/CSS/forms.css"> 
+</head> -->
+
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/nav.ejs') %>
+</head>
+
+<body>
+
+    <main>
+        <% if(prods.length > 0 ) { %>
+        <div class="grid">
+
+            <% for(let product of prods) { %>
+                <article class="card product-item">
+                    <header class="card__header">
+                        <h1 class="product__title"><%= product.title %></h1>
+                    </header>
+                    <div class="card__image">
+                        <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+                    </div>
+                    <div class="card__content">
+                        <h2 class="product__price">$<%= product.price %></h2>
+                        <p class="product__description"><%= product.description %></p>
+                    </div>
+                    <div class="card__actions">
+                        <!-- <button class="btn">Edit</button> -->
+                        <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn">Edit</a>
+
+                    
+                            <input type="hidden" name="productId" value="<%= product._id %>">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="btn" type="button" onclick="deleteProduct(this)">Delete</button>
+                        
+                    </div>
+                </article>
+            <% } %>
+
+        </div> 
+        <% } else { %>
+                <h1 style="color: red;">No products...</h1>
+        <% } %>
+    </main>
+    
+    <%- include('../includes/end.ejs') %>
+    <script src="/js/admin.js"></script>
+
+

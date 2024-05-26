@@ -1,0 +1,21 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/nav.ejs') %>
+</head>
+<body>
+<main class="centered">
+
+<h1><%= product.title %></h1>
+<hr>
+<div>
+    <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+</div>
+<h2>$<%= product.price %></h2>
+<p><%= product.description %></p>
+
+<!-- Add to cart logic is same everywhere , so we have included it to partial -->
+<% if(isAuthenticated) { %>
+    <%- include('../includes/add-to-cart') %> 
+<% } %>
+
+</main>
+    <%- include('../includes/end.ejs') %>
